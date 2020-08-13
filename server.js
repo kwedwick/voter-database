@@ -109,18 +109,18 @@ app.post('/api/candidate', ({ body }, res) => {
 
 
 
-    //Default response for any other request (NOT FOUND) Catch all
-    app.use((req, res) => {
-        res.status(404).end();
+//Default response for any other request (NOT FOUND) Catch all
+app.use((req, res) => {
+    res.status(404).end();
+});
+
+
+
+
+
+db.on('open', () => {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
     });
-
-
-
-
-
-    db.on('open', () => {
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-        });
-    });
+});
 
